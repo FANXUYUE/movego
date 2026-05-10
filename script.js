@@ -1,21 +1,44 @@
+const defaultTaskSteps = [
+  { title: "热身准备", time: "1:00", tip: "把动作做小一点，先找身体感觉。" },
+  { title: "主动作一", time: "2:00" },
+  { title: "主动作二", time: "2:00" },
+  { title: "节奏保持", time: "2:00" },
+  { title: "深呼吸放松", time: "1:00", tip: "如有刺痛感请停止动作。" },
+];
+
+const neckSteps = [
+  { title: "颈部侧伸", time: "2:00" },
+  { title: "肩绕环", time: "2:00" },
+  { title: "胸椎打开", time: "2:00" },
+  { title: "肩胛夹背", time: "2:00" },
+  { title: "深呼吸放松", time: "2:00", tip: "安全提示：如有刺痛感请停止动作。" },
+];
+
+const walkSteps = [
+  { title: "慢走启动", time: "2:00" },
+  { title: "轻快走", time: "4:00" },
+  { title: "放松摆臂", time: "2:00" },
+  { title: "慢走收尾", time: "2:00" },
+];
+
 const adventureLevels = [
-  { id: "a-1-1", kind: "adventure", code: "1-1", title: "下楼走一圈", type: "步行启动", duration: "5 分钟", minutes: 5, xp: 20, goal: "完成第一次低门槛运动" },
-  { id: "a-1-2", kind: "adventure", code: "1-2", title: "宿舍肩颈解锁", type: "拉伸恢复", duration: "6 分钟", minutes: 6, xp: 20, goal: "缓解久坐肩颈" },
-  { id: "a-1-3", kind: "adventure", code: "1-3", title: "饭后校园散步", type: "生活运动", duration: "10 分钟", minutes: 10, xp: 25, goal: "把运动嵌入日常" },
-  { id: "a-1-4", kind: "adventure", code: "1-4", title: "晨间唤醒", type: "轻激活", duration: "7 分钟", minutes: 7, xp: 25, goal: "起床后低强度激活" },
-  { id: "a-1-5", kind: "adventure", code: "1-5", title: "第一座能量桥", type: "Milestone", duration: "10 分钟", minutes: 10, xp: 50, goal: "综合轻运动挑战", milestone: true },
-  { id: "a-1-6", kind: "adventure", code: "1-6", title: "图书馆久坐修复", type: "久坐恢复", duration: "8 分钟", minutes: 8, xp: 25, goal: "自习后修复肩背髋" },
-  { id: "a-1-7", kind: "adventure", code: "1-7", title: "核心入门", type: "基础力量", duration: "10 分钟", minutes: 10, xp: 30, goal: "建立轻力量训练体验" },
-  { id: "a-1-8", kind: "adventure", code: "1-8", title: "校园快走挑战", type: "心肺入门", duration: "12 分钟", minutes: 12, xp: 30, goal: "稍微提高心肺强度" },
-  { id: "a-1-9", kind: "adventure", code: "1-9", title: "睡前舒缓", type: "放松恢复", duration: "8 分钟", minutes: 8, xp: 25, goal: "睡前低压力拉伸" },
-  { id: "a-1-10", kind: "adventure", code: "1-10", title: "一周不掉线", type: "Milestone", duration: "12 分钟", minutes: 12, xp: 80, goal: "完成第一章总结挑战", milestone: true },
+  { id: "a-1-1", kind: "adventure", code: "1-1", title: "下楼走一圈", type: "步行启动", duration: "5 分钟", minutes: 5, xp: 20, goal: "完成第一次低门槛运动", steps: walkSteps, mascot: "dongdong-3d-walk.png" },
+  { id: "a-1-2", kind: "adventure", code: "1-2", title: "宿舍肩颈解锁", type: "拉伸恢复", duration: "6 分钟", minutes: 6, xp: 20, goal: "缓解久坐肩颈", steps: neckSteps, mascot: "dongdong-3d-stretch.png" },
+  { id: "a-1-3", kind: "adventure", code: "1-3", title: "饭后校园散步", type: "生活运动", duration: "10 分钟", minutes: 10, xp: 25, goal: "把运动嵌入日常", steps: walkSteps, mascot: "dongdong-3d-walk.png" },
+  { id: "a-1-4", kind: "adventure", code: "1-4", title: "晨间唤醒", type: "轻激活", duration: "7 分钟", minutes: 7, xp: 25, goal: "起床后低强度激活", steps: defaultTaskSteps, mascot: "dongdong-3d-cheer.png" },
+  { id: "a-1-5", kind: "adventure", code: "1-5", title: "第一座能量桥", type: "Milestone", duration: "10 分钟", minutes: 10, xp: 50, goal: "综合轻运动挑战", milestone: true, steps: defaultTaskSteps, mascot: "dongdong-3d-cheer.png" },
+  { id: "a-1-6", kind: "adventure", code: "1-6", title: "图书馆久坐修复", type: "久坐恢复", duration: "8 分钟", minutes: 8, xp: 25, goal: "自习后修复肩背髋", steps: neckSteps, mascot: "dongdong-3d-stretch.png" },
+  { id: "a-1-7", kind: "adventure", code: "1-7", title: "核心入门", type: "基础力量", duration: "10 分钟", minutes: 10, xp: 30, goal: "建立轻力量训练体验", steps: defaultTaskSteps, mascot: "dongdong-3d-jog.png" },
+  { id: "a-1-8", kind: "adventure", code: "1-8", title: "校园快走挑战", type: "心肺入门", duration: "12 分钟", minutes: 12, xp: 30, goal: "稍微提高心肺强度", steps: walkSteps, mascot: "dongdong-3d-jog.png" },
+  { id: "a-1-9", kind: "adventure", code: "1-9", title: "睡前舒缓", type: "放松恢复", duration: "8 分钟", minutes: 8, xp: 25, goal: "睡前低压力拉伸", steps: neckSteps, mascot: "dongdong-3d-rest.png" },
+  { id: "a-1-10", kind: "adventure", code: "1-10", title: "一周不掉线", type: "Milestone", duration: "12 分钟", minutes: 12, xp: 80, goal: "完成第一章总结挑战", milestone: true, steps: defaultTaskSteps, mascot: "dongdong-3d-cheer.png" },
 ];
 
 const quickMoves = [
-  { id: "q-neck", kind: "quick", icon: "1", title: "肩颈放松", scene: "久坐救星", duration: "10 min", minutes: 10, xp: 20, tone: "mint", goal: "颈部侧伸、肩绕环、胸椎打开、肩胛夹背、深呼吸" },
-  { id: "q-core", kind: "quick", icon: "2", title: "核心入门", scene: "宿舍可做", duration: "10 min", minutes: 10, xp: 25, tone: "peach", goal: "死虫、臀桥、平板支撑膝盖版、呼吸收腹" },
-  { id: "q-walk", kind: "quick", icon: "3", title: "饭后散步", scene: "校园路上", duration: "10 min", minutes: 10, xp: 20, tone: "mint", goal: "慢走、轻快走、放松走" },
-  { id: "q-wake", kind: "quick", icon: "4", title: "晨间唤醒", scene: "低强度", duration: "10 min", minutes: 10, xp: 20, tone: "mint", goal: "站姿伸展、肩绕环、原地踏步、侧向伸展、深呼吸" },
+  { id: "q-neck", kind: "quick", icon: "1", title: "肩颈放松", scene: "久坐救星", duration: "10 min", minutes: 10, xp: 20, tone: "mint", goal: "颈部侧伸、肩绕环、胸椎打开、肩胛夹背、深呼吸", steps: neckSteps, mascot: "dongdong-3d-stretch.png" },
+  { id: "q-core", kind: "quick", icon: "2", title: "核心入门", scene: "宿舍可做", duration: "10 min", minutes: 10, xp: 25, tone: "peach", goal: "死虫、臀桥、平板支撑膝盖版、呼吸收腹", steps: defaultTaskSteps, mascot: "dongdong-3d-jog.png" },
+  { id: "q-walk", kind: "quick", icon: "3", title: "饭后散步", scene: "校园路上", duration: "10 min", minutes: 10, xp: 20, tone: "mint", goal: "慢走、轻快走、放松走", steps: walkSteps, mascot: "dongdong-3d-walk.png" },
+  { id: "q-wake", kind: "quick", icon: "4", title: "晨间唤醒", scene: "低强度", duration: "10 min", minutes: 10, xp: 20, tone: "mint", goal: "站姿伸展、肩绕环、原地踏步、侧向伸展、深呼吸", steps: defaultTaskSteps, mascot: "dongdong-3d-cheer.png" },
 ];
 
 const weeklyQuests = [
@@ -95,6 +118,8 @@ const defaultState = {
   recommendedDone: false,
   lastQuickTitle: "图书馆肩颈恢复",
   activeView: "adventure",
+  activeTaskId: "q-neck",
+  taskStarted: false,
   likedFeedIds: [],
   feedItems: seedFeedItems,
 };
@@ -105,6 +130,8 @@ const viewCopy = {
   quest: ["Quest", "日、周、月目标一起推进"],
   league: ["锦标赛", "每周 20 人一组，前五晋级"],
   community: ["社区", "好友完成的每一步都值得看见"],
+  profile: ["我的", "看见自己的小进步"],
+  task: ["肩颈放松", "10 分钟 · Easy · +20 XP"],
 };
 
 const validViews = Object.keys(viewCopy);
@@ -159,11 +186,34 @@ const dom = {
   rankingList: document.querySelector("#rankingList"),
   feedList: document.querySelector("#feedList"),
   publishMock: document.querySelector("#publishMock"),
+  profileLevel: document.querySelector("#profileLevel"),
+  profileStats: document.querySelector("#profileStats"),
+  profileProgress: document.querySelector("#profileProgress"),
+  badgeGrid: document.querySelector("#badgeGrid"),
+  reviewTitle: document.querySelector("#reviewTitle"),
+  reviewMeta: document.querySelector("#reviewMeta"),
+  reviewAdvice: document.querySelector("#reviewAdvice"),
+  taskMascot: document.querySelector("#taskMascot"),
+  taskDetailTitle: document.querySelector("#taskDetailTitle"),
+  taskDetailSubtitle: document.querySelector("#taskDetailSubtitle"),
+  taskStepList: document.querySelector("#taskStepList"),
+  taskTimerValue: document.querySelector("#taskTimerValue"),
+  taskTimerLabel: document.querySelector("#taskTimerLabel"),
+  taskTimerProgress: document.querySelector("#taskTimerProgress"),
+  swapTask: document.querySelector("#swapTask"),
+  startTask: document.querySelector("#startTask"),
+  finishTask: document.querySelector("#finishTask"),
   completeDialog: document.querySelector("#completeDialog"),
-  dialogLabel: document.querySelector("#dialogLabel"),
   dialogTitle: document.querySelector("#dialogTitle"),
   dialogBody: document.querySelector("#dialogBody"),
+  dialogXp: document.querySelector("#dialogXp"),
+  dialogProgress: document.querySelector("#dialogProgress"),
+  dialogStreak: document.querySelector("#dialogStreak"),
+  dialogQuest: document.querySelector("#dialogQuest"),
+  dialogTeam: document.querySelector("#dialogTeam"),
+  dialogBadge: document.querySelector("#dialogBadge"),
   closeDialog: document.querySelector("#closeDialog"),
+  shareReward: document.querySelector("#shareReward"),
 };
 
 let state = loadState();
@@ -192,6 +242,8 @@ function normalizeState(nextState) {
   return {
     ...nextState,
     activeView,
+    activeTaskId: findTask(nextState.activeTaskId)?.id || "q-neck",
+    taskStarted: Boolean(nextState.taskStarted),
     league: nextState.league === "青铜动能者" ? "青铜行动者" : nextState.league,
     leagueXp: Number.isFinite(nextState.leagueXp) ? nextState.leagueXp : 202,
     todayLeagueXp: Number.isFinite(nextState.todayLeagueXp) ? nextState.todayLeagueXp : 0,
@@ -230,6 +282,8 @@ function render() {
   renderQuests();
   renderLeague();
   renderCommunity();
+  renderProfile();
+  renderTaskDetail();
 }
 
 function renderShell() {
@@ -334,7 +388,7 @@ function renderQuickMoves() {
     const card = document.createElement("article");
     card.className = "quick-card";
     card.innerHTML = `
-      <button class="quick-card__button" type="button" data-complete-task="${move.id}">
+      <button class="quick-card__button" type="button" data-open-task="${move.id}">
         <span class="quick-icon quick-icon--${move.tone}">${move.icon}</span>
         <strong>${move.title}</strong>
         <small>${move.duration} · +${move.xp} XP</small>
@@ -444,8 +498,102 @@ function renderCommunity() {
   });
 }
 
+function renderProfile() {
+  const badges = [
+    { label: "第一步勇士", unlocked: state.completedTaskIds.length >= 5 },
+    { label: "饭后行动派", unlocked: state.completions.some((item) => item.taskId === "q-walk" || item.taskId === "a-1-3") },
+    { label: "久坐救星", unlocked: state.completions.some((item) => item.taskId === "q-neck" || item.taskId === "a-1-2") },
+    { label: "小队发动机", unlocked: state.teamContribution >= 1 },
+    { label: "五月动能者", unlocked: state.monthTaskCount >= 12 },
+    { label: "一周不掉线", unlocked: state.streak >= 7 || state.completedTaskIds.includes("a-1-10") },
+  ];
+
+  dom.profileLevel.textContent = `Lv.5 · ${state.league}`;
+  dom.profileStats.textContent = `${state.streak} 天连续 · ${state.xp} XP · 本月 ${state.monthTaskCount} 次`;
+  dom.profileProgress.style.width = `${percent(state.xp % 200, 200)}%`;
+  dom.reviewTitle.textContent = `本周完成 ${state.weekMoveDays} 天运动`;
+  dom.reviewMeta.textContent = `今日已完成 ${state.todayTasks} 个任务 · 锦标赛 +${state.todayLeagueXp} XP`;
+  dom.reviewAdvice.textContent = state.todayTasks
+    ? "动动建议：今天已经接住节奏，睡前可以做 2 分钟放松。"
+    : "动动建议：先从饭后散步或肩颈放松开始。";
+
+  dom.badgeGrid.innerHTML = "";
+  badges.forEach((badge) => {
+    const card = document.createElement("article");
+    card.className = `badge-card${badge.unlocked ? " unlocked" : ""}`;
+    card.innerHTML = `
+      <span>${badge.unlocked ? "奖" : "锁"}</span>
+      <strong>${badge.label}</strong>
+    `;
+    dom.badgeGrid.append(card);
+  });
+}
+
+function renderTaskDetail() {
+  const task = findTask(state.activeTaskId) || getCurrentLevel();
+  const steps = task.steps || defaultTaskSteps;
+
+  if (state.activeView === "task") {
+    dom.viewTitle.textContent = task.title;
+    dom.viewSubtitle.textContent = `${task.duration} · Easy · +${task.xp} XP`;
+  }
+
+  dom.taskMascot.src = `./assets/mascot/${task.mascot || "dongdong-3d-stretch.png"}`;
+  dom.taskDetailTitle.textContent = `${task.duration.replace("min", "分钟")} ${task.title}演示`;
+  dom.taskDetailSubtitle.textContent = task.goal || "导入真人/插画 GIF，步骤清晰";
+  dom.taskTimerValue.textContent = `${String(task.minutes).padStart(2, "0")}:00`;
+  dom.taskTimerLabel.textContent = state.taskStarted ? "任务进行中" : "准备开始";
+  dom.taskTimerProgress.style.width = state.taskStarted ? "38%" : "0%";
+  dom.startTask.hidden = state.taskStarted;
+  dom.finishTask.hidden = !state.taskStarted;
+
+  dom.taskStepList.innerHTML = "";
+  steps.forEach((step, index) => {
+    const row = document.createElement("article");
+    row.className = "step-row";
+    row.innerHTML = `
+      <span>${index + 1}</span>
+      <div>
+        <h3>${step.title}</h3>
+        ${step.tip ? `<p>${step.tip}</p>` : ""}
+      </div>
+      <strong>${step.time}</strong>
+    `;
+    dom.taskStepList.append(row);
+  });
+}
+
 function completeCurrentLevel() {
-  completeTask(getCurrentLevel().id);
+  openTaskDetail(getCurrentLevel().id);
+}
+
+function openTaskDetail(taskId) {
+  const task = findTask(taskId);
+  if (!task) return;
+
+  state.activeTaskId = task.id;
+  state.taskStarted = false;
+  state.activeView = "task";
+  saveState();
+  render();
+  dom.screen.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function startActiveTask() {
+  state.taskStarted = true;
+  saveState();
+  renderTaskDetail();
+}
+
+function finishActiveTask() {
+  completeTask(state.activeTaskId);
+}
+
+function swapActiveTask() {
+  const pool = findTask(state.activeTaskId)?.kind === "adventure" ? adventureLevels : quickMoves;
+  const currentIndex = pool.findIndex((task) => task.id === state.activeTaskId);
+  const nextTask = pool[(currentIndex + 1 + pool.length) % pool.length];
+  openTaskDetail(nextTask.id);
 }
 
 function completeTask(taskId) {
@@ -496,6 +644,7 @@ function completeTask(taskId) {
     state.currentAdventureTaskId = nextLevel?.id || task.id;
   }
 
+  state.taskStarted = false;
   addCompletionFeed(task, leagueXp);
   saveState();
   render();
@@ -503,12 +652,17 @@ function completeTask(taskId) {
 }
 
 function showDialog(task, rewarded, leagueXp = 0) {
-  dom.dialogLabel.textContent = task.kind === "quick" ? "Quick Move Done" : "Quest Complete";
-  dom.dialogTitle.textContent = `${task.title}完成`;
+  dom.dialogTitle.textContent = rewarded ? "完成啦！" : "已经完成过啦";
   dom.dialogBody.textContent = rewarded
-    ? `获得 ${task.xp} XP，锦标赛 +${leagueXp} XP，Quest 和社区动态已同步。`
-    : "这关已经完成过了，本次作为回看练习，不重复结算 XP。";
-  dom.closeDialog.textContent = task.kind === "quick" ? "继续快练" : "继续闯关";
+    ? "今天不用很猛，但你又把节奏接住了。"
+    : "这关可以回看练习，本次不重复结算 XP。";
+  dom.dialogXp.textContent = rewarded ? `+${task.xp} XP` : "+0 XP";
+  dom.dialogProgress.style.width = `${percent(state.xp % 200, 200)}%`;
+  dom.dialogStreak.textContent = `连续运动 ${state.streak} 天`;
+  dom.dialogQuest.textContent = `每日 Quest ${Math.min(state.todayTasks, 3)} / 3`;
+  dom.dialogTeam.textContent = `锦标赛 +${leagueXp} XP`;
+  dom.dialogBadge.textContent = task.milestone ? "章" : "奖";
+  dom.closeDialog.textContent = task.kind === "quick" ? "继续快练" : "继续冒险";
   dom.completeDialog.showModal();
 }
 
@@ -522,7 +676,7 @@ function switchView(viewName) {
 }
 
 function resetDemo() {
-  state = { ...defaultState, activeView: state.activeView };
+  state = { ...defaultState, activeView: state.activeView, activeTaskId: state.activeTaskId };
   saveState();
   render();
 }
@@ -604,7 +758,18 @@ function percent(value, target) {
 
 dom.startAdventure.addEventListener("click", completeCurrentLevel);
 dom.resetProgress.addEventListener("click", resetDemo);
-dom.closeDialog.addEventListener("click", () => dom.completeDialog.close());
+dom.startTask.addEventListener("click", startActiveTask);
+dom.finishTask.addEventListener("click", finishActiveTask);
+dom.swapTask.addEventListener("click", swapActiveTask);
+dom.closeDialog.addEventListener("click", () => {
+  dom.completeDialog.close();
+  const completedTask = findTask(state.activeTaskId);
+  switchView(completedTask?.kind === "quick" ? "quick" : "adventure");
+});
+dom.shareReward.addEventListener("click", () => {
+  dom.completeDialog.close();
+  switchView("community");
+});
 dom.publishMock.addEventListener("click", publishMockFeed);
 
 document.addEventListener("click", (event) => {
@@ -613,6 +778,9 @@ document.addEventListener("click", (event) => {
 
   const completeButton = event.target.closest("[data-complete-task]");
   if (completeButton) completeTask(completeButton.dataset.completeTask);
+
+  const openTaskButton = event.target.closest("[data-open-task]");
+  if (openTaskButton) openTaskDetail(openTaskButton.dataset.openTask);
 
   const likeButton = event.target.closest("[data-like-feed]");
   if (likeButton) likeFeedItem(likeButton.dataset.likeFeed);
