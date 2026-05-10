@@ -1,0 +1,18 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Dongdong avatar</title>
+  <desc id="desc">A relaxed sporty capybara mascot avatar with a green headband.</desc>
+  <rect width="160" height="160" rx="80" fill="#FFF2C7"/>
+  <circle cx="80" cy="80" r="62" fill="#34B878"/>
+  <circle cx="80" cy="80" r="55" fill="#F5BD35"/>
+  <circle cx="80" cy="80" r="49" fill="#4FBE69"/>
+  <path d="M44 62c0-25 20-42 40-42s40 17 40 42v17c0 28-17 48-40 48S44 107 44 79V62Z" fill="#B9783E"/>
+  <path d="M44 73c8 13 23 20 40 20s32-7 40-20v10c0 26-17 44-40 44S44 109 44 83V73Z" fill="#A96B36"/>
+  <path d="M45 54c8-17 22-26 39-26s31 9 39 26c-22-8-52-8-78 0Z" fill="#2FAE66"/>
+  <path d="M43 58c21-10 57-13 81-1" stroke="#FFF2C7" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="64" cy="75" r="5" fill="#24160F"/>
+  <circle cx="96" cy="75" r="5" fill="#24160F"/>
+  <ellipse cx="80" cy="91" rx="16" ry="12" fill="#8F542B" fill-opacity=".46"/>
+  <circle cx="74" cy="89" r="2.6" fill="#24160F"/>
+  <circle cx="86" cy="89" r="2.6" fill="#24160F"/>
+  <path d="M67 108c8 6 19 6 27 0" stroke="#6E4025" stroke-width="4" stroke-linecap="round"/>
+</svg>

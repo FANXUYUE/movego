@@ -1,0 +1,24 @@
+<svg width="220" height="240" viewBox="0 0 220 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Dongdong standing</title>
+  <desc id="desc">A sporty capybara wearing a green headband, small water bottle, and running shoes.</desc>
+  <ellipse cx="110" cy="218" rx="72" ry="12" fill="#182230" fill-opacity=".12"/>
+  <path d="M70 114c8-21 28-34 48-31 26 4 45 25 45 58v24c0 35-23 55-55 55-31 0-54-20-54-54v-18c0-13 5-26 16-34Z" fill="#4FBE69"/>
+  <path d="M68 151c13 18 35 27 60 24 13-1 25-5 35-12v5c0 32-23 52-55 52-31 0-54-20-54-54v-8c4 0 9-2 14-7Z" fill="#39A95D"/>
+  <path d="M142 123l22 14-11 37-24-7 4-36 9-8Z" fill="#63B7E8"/>
+  <path d="M161 140l10 4-11 36-10-4 11-36Z" fill="#2F75C8"/>
+  <path d="M72 65c0-32 24-53 53-53 28 0 52 21 52 53v21c0 35-22 58-52 58S72 121 72 86V65Z" fill="#BF7D42"/>
+  <path d="M73 84c12 16 30 24 52 24s40-8 52-24v9c0 31-22 51-52 51S73 124 73 93v-9Z" fill="#AA6B37"/>
+  <path d="M74 57c10-22 29-34 51-34s41 12 51 34c-29-10-65-10-102 0Z" fill="#2FAE66"/>
+  <path d="M72 62c28-13 76-15 106 0" stroke="#FFF2C7" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="104" cy="78" r="6" fill="#24160F"/>
+  <circle cx="145" cy="78" r="6" fill="#24160F"/>
+  <ellipse cx="124" cy="99" rx="18" ry="13" fill="#8F542B" fill-opacity=".45"/>
+  <circle cx="118" cy="96" r="3" fill="#24160F"/>
+  <circle cx="131" cy="96" r="3" fill="#24160F"/>
+  <path d="M90 158c-25 5-39 20-42 40" stroke="#BF7D42" stroke-width="14" stroke-linecap="round"/>
+  <path d="M157 158c19 8 28 21 31 38" stroke="#BF7D42" stroke-width="14" stroke-linecap="round"/>
+  <path d="M71 218h34c3 0 5-3 3-6l-3-6H78c-9 0-17 4-22 10 4 2 9 2 15 2Z" fill="#2F75C8"/>
+  <path d="M132 218h36c3 0 5-3 3-6l-3-6h-28c-9 0-17 4-22 10 4 2 9 2 14 2Z" fill="#2F75C8"/>
+  <path d="M79 205h26" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M140 205h27" stroke="#FFF" stroke-width="4" stroke-linecap="round"/>
+</svg>

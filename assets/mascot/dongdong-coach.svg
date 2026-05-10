@@ -1,0 +1,21 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Dongdong coach</title>
+  <desc id="desc">Dongdong as a gentle exercise buddy holding a small card.</desc>
+  <ellipse cx="116" cy="218" rx="78" ry="12" fill="#182230" fill-opacity=".12"/>
+  <path d="M68 114c9-22 30-35 52-32 29 4 50 27 50 62v22c0 34-24 54-58 54s-58-20-58-54v-16c0-14 4-27 14-36Z" fill="#4FBE69"/>
+  <path d="M147 124l24 13-10 38-25-6 3-36 8-9Z" fill="#63B7E8"/>
+  <path d="M75 65c0-32 24-53 53-53s53 21 53 53v20c0 35-23 58-53 58S75 120 75 85V65Z" fill="#BF7D42"/>
+  <path d="M76 83c13 16 31 24 52 24s39-8 52-24v10c0 30-23 50-52 50S76 123 76 93V83Z" fill="#AA6B37"/>
+  <path d="M78 57c10-22 29-34 50-34s40 12 50 34c-28-10-63-10-100 0Z" fill="#2FAE66"/>
+  <path d="M75 62c29-13 76-15 106 0" stroke="#FFF2C7" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="108" cy="78" r="6" fill="#24160F"/>
+  <circle cx="147" cy="78" r="6" fill="#24160F"/>
+  <ellipse cx="128" cy="99" rx="18" ry="13" fill="#8F542B" fill-opacity=".45"/>
+  <path d="M117 113c8 5 18 5 26 0" stroke="#6E4025" stroke-width="5" stroke-linecap="round"/>
+  <path d="M73 158c-20 4-34 13-44 28" stroke="#BF7D42" stroke-width="14" stroke-linecap="round"/>
+  <rect x="17" y="154" width="58" height="44" rx="8" fill="#FFF" stroke="#D8DEE8" stroke-width="3"/>
+  <path d="M30 170h29M30 184h18" stroke="#28B87A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M157 158c20 8 33 20 39 38" stroke="#BF7D42" stroke-width="14" stroke-linecap="round"/>
+  <path d="M56 217h37c3 0 5-3 3-6l-3-6H66c-9 0-17 4-23 10 4 2 8 2 13 2Z" fill="#2F75C8"/>
+  <path d="M136 217h37c3 0 5-3 3-6l-3-6h-27c-9 0-17 4-23 10 4 2 8 2 13 2Z" fill="#2F75C8"/>
+</svg>

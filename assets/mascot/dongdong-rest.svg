@@ -1,0 +1,17 @@
+<svg width="240" height="200" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Dongdong resting</title>
+  <desc id="desc">Dongdong resting calmly with a water bottle nearby.</desc>
+  <ellipse cx="120" cy="178" rx="88" ry="14" fill="#182230" fill-opacity=".12"/>
+  <path d="M56 104c20-25 55-36 92-28 35 8 56 30 58 58 2 29-25 49-70 50-47 1-87-15-98-42-5-13 1-27 18-38Z" fill="#4FBE69"/>
+  <path d="M48 126c19 24 52 34 91 31 27-2 50-10 65-24v5c0 28-26 45-68 46-47 1-87-15-98-42-3-6-3-11-2-16h12Z" fill="#39A95D"/>
+  <path d="M68 69c4-26 29-43 61-40 32 3 54 24 50 50l-2 14c-5 32-32 50-67 45-35-4-55-29-50-61l8-8Z" fill="#BF7D42"/>
+  <path d="M66 86c11 16 29 26 52 29s43-2 57-15l-1 8c-5 24-30 39-62 35-33-4-53-25-50-49l4-8Z" fill="#AA6B37"/>
+  <path d="M72 62c13-18 34-27 57-24 23 2 41 15 48 35-28-13-64-18-105-11Z" fill="#2FAE66"/>
+  <path d="M69 66c31-8 77-4 108 13" stroke="#FFF2C7" stroke-width="7" stroke-linecap="round"/>
+  <path d="M95 85c5-3 10-2 13 2" stroke="#24160F" stroke-width="5" stroke-linecap="round"/>
+  <path d="M134 90c5-3 10-2 13 2" stroke="#24160F" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="118" cy="107" rx="18" ry="12" transform="rotate(7 118 107)" fill="#8F542B" fill-opacity=".45"/>
+  <path d="M176 120l26 5-6 40-28-3 1-35 7-7Z" fill="#63B7E8"/>
+  <path d="M33 177h39c3 0 5-3 3-6l-3-6H45c-9 0-18 4-24 10 4 2 8 2 12 2Z" fill="#2F75C8"/>
+  <path d="M91 184h39c3 0 5-3 3-6l-3-6h-27c-9 0-18 4-24 10 4 2 8 2 12 2Z" fill="#2F75C8"/>
+</svg>

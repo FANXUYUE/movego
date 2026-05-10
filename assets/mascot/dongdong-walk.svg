@@ -1,0 +1,19 @@
+<svg width="220" height="240" viewBox="0 0 220 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Dongdong walking</title>
+  <desc id="desc">Dongdong taking an easy campus walk.</desc>
+  <ellipse cx="111" cy="218" rx="74" ry="12" fill="#182230" fill-opacity=".12"/>
+  <path d="M68 118c10-22 31-34 54-30 29 5 47 28 47 61v17c0 34-23 53-56 53s-56-20-56-53v-15c0-13 4-24 11-33Z" fill="#4FBE69"/>
+  <path d="M147 127l22 13-10 36-24-6 4-35 8-8Z" fill="#63B7E8"/>
+  <path d="M75 68c0-31 23-52 52-52s52 21 52 52v18c0 35-22 58-52 58S75 121 75 86V68Z" fill="#BF7D42"/>
+  <path d="M76 84c13 16 31 24 51 24 22 0 40-8 52-24v10c0 30-22 50-52 50S76 124 76 94V84Z" fill="#AA6B37"/>
+  <path d="M77 60c10-22 29-34 50-34s40 12 50 34c-28-10-62-10-100 0Z" fill="#2FAE66"/>
+  <path d="M75 64c29-13 75-15 106 0" stroke="#FFF2C7" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="107" cy="80" r="6" fill="#24160F"/>
+  <circle cx="145" cy="80" r="6" fill="#24160F"/>
+  <ellipse cx="127" cy="100" rx="18" ry="13" fill="#8F542B" fill-opacity=".45"/>
+  <path d="M88 156c-25 5-40 17-48 36" stroke="#BF7D42" stroke-width="14" stroke-linecap="round"/>
+  <path d="M151 160c25 12 42 23 54 43" stroke="#BF7D42" stroke-width="14" stroke-linecap="round"/>
+  <path d="M31 214h37c3 0 5-3 3-6l-3-6H42c-9 0-17 4-23 10 4 2 8 2 12 2Z" fill="#2F75C8"/>
+  <path d="M163 221h38c3 0 5-3 3-6l-3-6h-27c-9 0-17 4-23 10 4 2 8 2 12 2Z" fill="#2F75C8"/>
+  <path d="M188 75c13 6 21 15 24 28" stroke="#F5BD35" stroke-width="5" stroke-linecap="round"/>
+</svg>

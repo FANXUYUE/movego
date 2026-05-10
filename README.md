@@ -19,6 +19,14 @@
 - Git 分支、提交、版本发布规则见 `PROJECT_MANAGEMENT.md`。
 - 当前版本建议打 tag：`v1.0.0`。
 
+## 产品文档
+
+- PRD：`docs/notion/product-prd.md`
+- Dev Backlog：`docs/notion/dev-backlog.md`
+- 工程开发说明：`docs/notion/engineering-guide.md`
+- 视觉素材：`assets/images/`
+- 动动吉祥物素材库：`assets/mascot/`
+
 ## 本地预览
 
 ```bash

@@ -3,162 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>动动Go / MoveGo</title>
+    <title>动动Go / MoveGo - Adventure</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app-shell">
-      <section class="phone">
-        <header class="topbar">
-          <div>
-            <p class="eyebrow">MoveGo</p>
-            <h1>今晚一起动一下</h1>
-          </div>
-          <button class="icon-button" aria-label="提醒">
-            <span aria-hidden="true">!</span>
+      <section class="phone" aria-label="动动Go Adventure">
+        <section class="screen">
+          <header class="topbar app-header">
+            <div>
+              <h1>动动Go</h1>
+              <p>今天不用很猛，动一下就算赢。</p>
+            </div>
+            <button class="avatar-button" aria-label="进入我的页">
+              <img class="mascot-art mascot-art--small" src="./assets/mascot/dongdong-3d-avatar.png" alt="" aria-hidden="true" />
+            </button>
+          </header>
+
+          <section class="user-card" aria-label="用户状态">
+            <div class="mascot-badge">
+              <img class="mascot-art mascot-art--card" src="./assets/mascot/dongdong-3d-base.png" alt="动动，戴绿色运动发带、背小水壶、穿运动鞋的小水豚" />
+            </div>
+            <div class="user-copy">
+              <h2>Lina</h2>
+              <p>Lv.5 · 青铜动能者</p>
+              <div class="level-track" aria-hidden="true"><span></span></div>
+              <div class="stat-row" aria-label="状态数据">
+                <span><strong id="streakValue">3</strong> 连续 7 天</span>
+                <span><strong id="xpValue">120</strong> XP</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter-heading" id="milestoneCard" aria-live="polite">
+            <div>
+              <h2>第 1 章：从 0 开始动起来</h2>
+              <p id="milestoneTitle">再完成 1 关，解锁第一步勇士</p>
+            </div>
+            <span id="milestoneCount">0/5</span>
+          </section>
+
+          <section class="map-section" aria-labelledby="mapTitle">
+            <div class="section-heading">
+              <div>
+                <h2 id="mapTitle">主线地图</h2>
+              </div>
+              <button class="reset-button" id="resetProgress" type="button">重置</button>
+            </div>
+            <ol class="adventure-map" id="adventureMap"></ol>
+          </section>
+
+          <section class="current-card" id="currentCard" aria-live="polite">
+            <div class="current-card__meta">
+              <p class="label" id="currentCode">1-1 当前关卡</p>
+              <h2 id="currentTitle">下楼走一圈</h2>
+              <p id="currentGoal">完成第一次低门槛运动</p>
+              <div class="pill-row">
+                <span id="currentDuration">5 分钟</span>
+                <span id="currentType">步行启动</span>
+                <span id="currentReward">20 XP</span>
+              </div>
+            </div>
+            <button class="primary-action" id="startAdventure" type="button">开始</button>
+          </section>
+        </section>
+
+        <nav class="bottom-nav" aria-label="底部导航">
+          <button class="nav-item active" type="button" aria-current="page">
+            <span aria-hidden="true">◇</span>
+            冒险
           </button>
-        </header>
-
-        <section class="hero-panel">
-          <div class="hero-copy">
-            <p>AI 运动搭子</p>
-            <h2>20 分钟轻量 Quest 已准备好</h2>
-            <span>按宿舍、校园、饭后三种场景自动推荐</span>
-          </div>
-          <div class="mascot" aria-hidden="true">
-            <div class="mascot-head"></div>
-            <div class="mascot-body"></div>
-            <div class="pulse-ring"></div>
-          </div>
-        </section>
-
-        <section class="stats-grid" aria-label="今日状态">
-          <article>
-            <span>连续</span>
-            <strong id="streak">7</strong>
-            <p>天坚持</p>
-          </article>
-          <article>
-            <span>小队</span>
-            <strong>3/4</strong>
-            <p>已打卡</p>
-          </article>
-          <article>
-            <span>能量</span>
-            <strong id="energy">82</strong>
-            <p>点</p>
-          </article>
-        </section>
-
-        <nav class="tabs" aria-label="功能切换">
-          <button class="tab active" data-tab="today">今日</button>
-          <button class="tab" data-tab="buddy">搭子</button>
-          <button class="tab" data-tab="team">小队</button>
-          <button class="tab" data-tab="badges">成就</button>
+          <button class="nav-item" type="button">
+            <span aria-hidden="true">↯</span>
+            快练
+          </button>
+          <button class="nav-item" type="button">
+            <span aria-hidden="true">✓</span>
+            Quest
+          </button>
+          <button class="nav-item" type="button">
+            <span aria-hidden="true">♢</span>
+            锦标赛
+          </button>
+          <button class="nav-item" type="button">
+            <span aria-hidden="true">＋</span>
+            社区
+          </button>
         </nav>
-
-        <section class="tab-panel active" id="today">
-          <article class="quest-card selected">
-            <div>
-              <p class="label">首推 Quest</p>
-              <h3>宿舍肩颈解锁</h3>
-              <span>8 分钟 · 不扰民 · 适合学习后</span>
-            </div>
-            <button class="primary" id="startQuest">开始</button>
-          </article>
-          <article class="quest-card">
-            <div>
-              <p class="label">饭后散步</p>
-              <h3>操场两圈慢走</h3>
-              <span>18 分钟 · 可邀请室友</span>
-            </div>
-            <button class="ghost">组队</button>
-          </article>
-          <article class="checkin-card" id="checkinCard">
-            <div class="progress-circle">
-              <span id="progressText">0%</span>
-            </div>
-            <div>
-              <p class="label">运动识别</p>
-              <h3 id="checkinTitle">等待开始</h3>
-              <span id="checkinHint">完成动作后可获得能量和徽章碎片</span>
-            </div>
-          </article>
-        </section>
-
-        <section class="tab-panel" id="buddy">
-          <article class="coach-card">
-            <p class="label">动动建议</p>
-            <h3>你现在不需要“练狠”，只要让身体重新上线。</h3>
-            <div class="chat-row user">我今天好累，不想运动。</div>
-            <div class="chat-row bot">那就选 6 分钟拉伸版，完成也算赢。</div>
-          </article>
-          <div class="choice-grid">
-            <button class="choice active">低能量模式</button>
-            <button class="choice">和室友一起</button>
-            <button class="choice">想出门走走</button>
-          </div>
-        </section>
-
-        <section class="tab-panel" id="team">
-          <article class="team-card">
-            <div>
-              <p class="label">室友小队</p>
-              <h3>407 晚间充电站</h3>
-              <span>今日共同目标：累计 60 分钟</span>
-            </div>
-            <strong>48/60</strong>
-          </article>
-          <ul class="member-list">
-            <li><span>小林</span><strong>已完成肩颈解锁</strong></li>
-            <li><span>你</span><strong id="meStatus">待开始</strong></li>
-            <li><span>阿月</span><strong>操场散步中</strong></li>
-            <li><span>嘉嘉</span><strong>已预约 21:30</strong></li>
-          </ul>
-        </section>
-
-        <section class="tab-panel" id="badges">
-          <div class="badge-wall">
-            <article class="badge earned"><span>7</span><p>七日续航</p></article>
-            <article class="badge earned"><span>S</span><p>宿舍启动</p></article>
-            <article class="badge"><span>Q</span><p>小队王牌</p></article>
-            <article class="badge"><span>M</span><p>月度稳定</p></article>
-          </div>
-          <article class="insight-card">
-            <p class="label">本周洞察</p>
-            <h3>你更容易在晚饭后完成运动。</h3>
-            <span>建议把提醒固定在 20:40，并优先推荐低门槛任务。</span>
-          </article>
-        </section>
       </section>
-
-      <aside class="product-board">
-        <p class="eyebrow">产品结构</p>
-        <h2>用社交压力和即时反馈，把运动变成可坚持的小任务。</h2>
-        <div class="board-grid">
-          <article>
-            <span>01</span>
-            <h3>轻量 Quest</h3>
-            <p>按时间、地点、疲劳程度推荐可完成运动，不让用户被复杂计划劝退。</p>
-          </article>
-          <article>
-            <span>02</span>
-            <h3>AI 搭子</h3>
-            <p>用鼓励式话术调整任务强度，帮助用户从“不想动”过渡到“先做一点”。</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>室友小队</h3>
-            <p>展示队友进度、邀请组队、共同目标，让坚持变成寝室内的小默契。</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>成就反馈</h3>
-            <p>连续天数、能量值、徽章碎片和周洞察，强化“我做得到”的感受。</p>
-          </article>
-        </div>
-      </aside>
     </main>
+
+    <dialog class="complete-dialog" id="completeDialog">
+      <div class="dialog-mascot">
+        <img class="mascot-art mascot-art--dialog" src="./assets/mascot/dongdong-3d-cheer.png" alt="" aria-hidden="true" />
+      </div>
+      <p class="label">Quest Complete</p>
+      <h2 id="dialogTitle">下楼走一圈完成</h2>
+      <p id="dialogBody">获得 20 XP，下一关已解锁。</p>
+      <button class="primary-action" id="closeDialog" type="button">继续闯关</button>
+    </dialog>
 
     <script src="./script.js"></script>
   </body>

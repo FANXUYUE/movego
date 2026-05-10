@@ -81,6 +81,12 @@ V1 不承担完整 PRD 的全部 MVP 功能。完整 MVP 的开发说明已经�
 - Dev Backlog：<https://www.notion.so/35cebc76fe9c8140b13edc08feb05e83>
 - 工程开发说明：<https://www.notion.so/35cebc76fe9c8169bfb3eb1e02d9722e>
 
+本地导出的 Markdown 备份：
+
+- [PRD](docs/notion/product-prd.md)
+- [Dev Backlog](docs/notion/dev-backlog.md)
+- [工程开发说明](docs/notion/engineering-guide.md)
+
 ## 推荐里程碑
 
 ### V1.0.0 - 当前原型基线
