@@ -89,10 +89,10 @@ const leagueRivals = [
 ];
 
 const seedFeedItems = [
-  { id: "seed-badge", type: "badge", icon: "奖", title: "Lina 解锁了「一周不掉线」徽章", meta: "自动成就 · 刚刚", likes: 8, comments: 2 },
-  { id: "seed-core", type: "completion", icon: "火", title: "Jason 完成 10 分钟核心入门", meta: "运动动态 · 12 分钟前", likes: 12, comments: 3 },
-  { id: "seed-team", type: "team", icon: "箱", title: "宿舍动动队还差 3 次开宝箱", meta: "小队提醒 · 25 分钟前", likes: 5, comments: 1 },
-  { id: "seed-video", type: "share", icon: "影", title: "小陈 分享了饭后散步视频", meta: "好友分享 · 42 分钟前", likes: 16, comments: 4 },
+  { id: "seed-badge", type: "badge", avatar: "dongdong-3d-cheer.png", title: "Lina 解锁了「一周不掉线」徽章", meta: "自动成就 · 刚刚", likes: 8, comments: 2 },
+  { id: "seed-core", type: "completion", avatar: "dongdong-3d-jog.png", title: "Jason 完成 10 分钟核心入门", meta: "运动动态 · 12 分钟前", likes: 12, comments: 3 },
+  { id: "seed-team", type: "team", avatar: "dongdong-action-sheet.png", title: "宿舍动动队还差 3 次开宝箱", meta: "小队提醒 · 25 分钟前", likes: 5, comments: 1 },
+  { id: "seed-video", type: "share", avatar: "dongdong-3d-walk.png", title: "小陈 分享了饭后散步视频", meta: "好友分享 · 42 分钟前", likes: 16, comments: 4 },
 ];
 
 const STORAGE_KEY = "movego-demo-v2";
@@ -483,7 +483,9 @@ function renderCommunity() {
     const card = document.createElement("article");
     card.className = `feed-card feed-card--${item.type}`;
     card.innerHTML = `
-      <span class="feed-icon">${item.icon}</span>
+      <span class="feed-icon">
+        <img src="./assets/mascot/${item.avatar || "dongdong-3d-avatar.png"}" alt="" aria-hidden="true" />
+      </span>
       <div>
         <h2>${item.title}</h2>
         <p>${item.meta}</p>
@@ -539,6 +541,7 @@ function renderTaskDetail() {
   }
 
   dom.taskMascot.src = `./assets/mascot/${task.mascot || "dongdong-3d-stretch.png"}`;
+  dom.taskMascot.parentElement.className = `task-demo task-demo--${task.type.includes("步行") || task.type.includes("散步") || task.type.includes("快走") ? "walk" : task.type.includes("力量") ? "core" : "stretch"}`;
   dom.taskDetailTitle.textContent = `${task.duration.replace("min", "分钟")} ${task.title}演示`;
   dom.taskDetailSubtitle.textContent = task.goal || "导入真人/插画 GIF，步骤清晰";
   dom.taskTimerValue.textContent = `${String(task.minutes).padStart(2, "0")}:00`;
@@ -704,7 +707,7 @@ function addCompletionFeed(task, leagueXp) {
   const feedItem = {
     id: `feed-${Date.now()}`,
     type: task.milestone ? "badge" : "completion",
-    icon: task.milestone ? "奖" : task.kind === "quick" ? "火" : "动",
+    avatar: "dongdong-3d-avatar.png",
     title: `我完成了「${task.title}」`,
     meta: `自动动态 · 锦标赛 +${leagueXp} XP`,
     likes: 0,
@@ -726,7 +729,7 @@ function publishMockFeed() {
     {
       id: `mock-${Date.now()}`,
       type: "share",
-      icon: "卡",
+      avatar: "dongdong-3d-avatar.png",
       title: "我分享了一张今日运动任务卡",
       meta: "好友分享 · 刚刚",
       likes: 0,

@@ -432,12 +432,11 @@ h3 {
 }
 
 .current-card {
-  position: sticky;
+  position: relative;
   z-index: 5;
-  bottom: 82px;
   align-items: end;
   min-height: 98px;
-  margin-top: -34px;
+  margin-top: 18px;
   padding: 14px;
   border-radius: 16px;
   background: var(--panel);
@@ -970,6 +969,13 @@ h3 {
   background: var(--mint-soft);
   font-size: 14px;
   font-weight: 900;
+  overflow: hidden;
+}
+
+.feed-icon img {
+  width: 46px;
+  height: 48px;
+  object-fit: contain;
 }
 
 .feed-card h2 {
@@ -1117,6 +1123,61 @@ h3 {
   overflow: hidden;
 }
 
+.task-demo .mascot-art--task {
+  position: relative;
+  z-index: 2;
+}
+
+.task-demo--walk .mascot-art--task {
+  animation: demo-walk 1.2s ease-in-out infinite;
+}
+
+.task-demo--core .mascot-art--task,
+.task-demo--stretch .mascot-art--task {
+  animation: demo-breathe 1.8s ease-in-out infinite;
+}
+
+.demo-ground {
+  position: absolute;
+  left: 32px;
+  right: 122px;
+  bottom: 46px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(9, 149, 77, 0.16);
+}
+
+.demo-step {
+  position: absolute;
+  z-index: 1;
+  width: 10px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(9, 149, 77, 0.36);
+  opacity: 0;
+}
+
+.task-demo--walk .demo-step {
+  animation: demo-step 1.2s ease-in-out infinite;
+}
+
+.demo-step--one {
+  left: 70px;
+  bottom: 56px;
+}
+
+.demo-step--two {
+  left: 108px;
+  bottom: 50px;
+  animation-delay: 0.22s;
+}
+
+.demo-step--three {
+  left: 146px;
+  bottom: 56px;
+  animation-delay: 0.44s;
+}
+
 .motion-line {
   position: absolute;
   left: 196px;
@@ -1147,6 +1208,48 @@ h3 {
   color: var(--mint);
   font-size: 22px;
   line-height: 1;
+}
+
+.task-demo--walk .play-mark {
+  left: 222px;
+}
+
+@keyframes demo-walk {
+  0%,
+  100% {
+    transform: translateX(-8px) translateY(0) rotate(-1deg);
+  }
+
+  50% {
+    transform: translateX(14px) translateY(-5px) rotate(2deg);
+  }
+}
+
+@keyframes demo-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-4px) scale(1.02);
+  }
+}
+
+@keyframes demo-step {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px) scale(0.8);
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(18px) scale(1);
+  }
 }
 
 .task-preview h2 {
