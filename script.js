@@ -30,17 +30,62 @@ const dailyQuests = [
   { id: "d-team", step: 3, title: "今日小挑战", desc: "AI 推荐 + 小队贡献", reward: "80 XP + 钥匙", doneWhen: (s) => s.recommendedDone && s.teamContribution >= 1 },
 ];
 
+const leagueTiers = [
+  { name: "青铜行动者", color: "#ad6c3a" },
+  { name: "白银坚持者", color: "#b9bac4" },
+  { name: "黄金动能者", color: "#ffc83d" },
+  { name: "铂金挑战者", color: "#8fd5ea" },
+  { name: "翡翠探索者", color: "#1eb55f" },
+  { name: "钻石运动家", color: "#4e78f0" },
+  { name: "星耀领跑者", color: "#7357d8" },
+  { name: "大师训练官", color: "#f2473f" },
+  { name: "王者动能者", color: "#14212b" },
+  { name: "传奇动动星", color: "#ee8df4" },
+];
+
+const leagueRivals = [
+  { id: "mia", name: "Mia", xp: 340 },
+  { id: "jason", name: "Jason", xp: 317 },
+  { id: "chen", name: "小陈", xp: 294 },
+  { id: "kira", name: "Kira", xp: 271 },
+  { id: "nate", name: "Nate", xp: 248 },
+  { id: "ryan", name: "Ryan", xp: 225 },
+  { id: "lina", name: "Lina", xp: 179 },
+  { id: "ada", name: "Ada", xp: 156 },
+  { id: "tony", name: "Tony", xp: 133 },
+  { id: "ben", name: "Ben", xp: 110 },
+  { id: "ivy", name: "Ivy", xp: 87 },
+  { id: "zoe", name: "Zoe", xp: 64 },
+  { id: "kevin", name: "Kevin", xp: 52 },
+  { id: "yuki", name: "Yuki", xp: 43 },
+  { id: "ann", name: "Ann", xp: 38 },
+  { id: "leo", name: "Leo", xp: 34 },
+  { id: "noah", name: "Noah", xp: 22 },
+  { id: "xin", name: "阿新", xp: 18 },
+  { id: "bo", name: "Bo", xp: 12 },
+];
+
+const seedFeedItems = [
+  { id: "seed-badge", type: "badge", icon: "奖", title: "Lina 解锁了「一周不掉线」徽章", meta: "自动成就 · 刚刚", likes: 8, comments: 2 },
+  { id: "seed-core", type: "completion", icon: "火", title: "Jason 完成 10 分钟核心入门", meta: "运动动态 · 12 分钟前", likes: 12, comments: 3 },
+  { id: "seed-team", type: "team", icon: "箱", title: "宿舍动动队还差 3 次开宝箱", meta: "小队提醒 · 25 分钟前", likes: 5, comments: 1 },
+  { id: "seed-video", type: "share", icon: "影", title: "小陈 分享了饭后散步视频", meta: "好友分享 · 42 分钟前", likes: 16, comments: 4 },
+];
+
 const STORAGE_KEY = "movego-demo-v2";
 const legacyStorageKey = "movego-adventure-v1";
 const defaultState = {
   xp: 120,
   streak: 3,
   moveCoins: 0,
-  league: "青铜动能者",
+  league: "青铜行动者",
+  leagueXp: 202,
   currentAdventureTaskId: "a-1-1",
   completedTaskIds: [],
   quickCompletionIds: [],
+  completions: [],
   todayTasks: 0,
+  todayLeagueXp: 0,
   todayMainOrQuick: 0,
   weekMoveDays: 2,
   weekQuickCount: 1,
@@ -50,15 +95,19 @@ const defaultState = {
   recommendedDone: false,
   lastQuickTitle: "图书馆肩颈恢复",
   activeView: "adventure",
+  likedFeedIds: [],
+  feedItems: seedFeedItems,
 };
 
 const viewCopy = {
   adventure: ["动动Go", "今天不用很猛，动一下就算赢。"],
   quick: ["快练一下", "没时间也能轻松保住节奏"],
   quest: ["Quest", "日、周、月目标一起推进"],
-  league: ["锦标赛", "下一版接上段位排行榜"],
-  community: ["社区", "下一版接上好友动态流"],
+  league: ["锦标赛", "每周 20 人一组，前五晋级"],
+  community: ["社区", "好友完成的每一步都值得看见"],
 };
+
+const validViews = Object.keys(viewCopy);
 
 const mapPositions = [
   { x: 50, y: 18 },
@@ -103,6 +152,13 @@ const dom = {
   monthQuestProgress: document.querySelector("#monthQuestProgress"),
   teamQuestText: document.querySelector("#teamQuestText"),
   teamQuestProgress: document.querySelector("#teamQuestProgress"),
+  leagueName: document.querySelector("#leagueName"),
+  leagueTimeLeft: document.querySelector("#leagueTimeLeft"),
+  leagueRankPill: document.querySelector("#leagueRankPill"),
+  leaguePath: document.querySelector("#leaguePath"),
+  rankingList: document.querySelector("#rankingList"),
+  feedList: document.querySelector("#feedList"),
+  publishMock: document.querySelector("#publishMock"),
   completeDialog: document.querySelector("#completeDialog"),
   dialogLabel: document.querySelector("#dialogLabel"),
   dialogTitle: document.querySelector("#dialogTitle"),
@@ -115,14 +171,34 @@ let state = loadState();
 function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    if (saved) return { ...defaultState, ...saved };
+    if (saved) return normalizeState({ ...defaultState, ...saved });
 
     const legacy = JSON.parse(localStorage.getItem(legacyStorageKey));
-    if (legacy) return { ...defaultState, ...legacy, league: "青铜动能者" };
+    if (legacy) return normalizeState({ ...defaultState, ...legacy, league: "青铜行动者" });
   } catch {
-    return { ...defaultState };
+    return normalizeState({ ...defaultState });
   }
-  return { ...defaultState };
+  return normalizeState({ ...defaultState });
+}
+
+function normalizeState(nextState) {
+  const previewView = new URLSearchParams(window.location.search).get("view");
+  const activeView = validViews.includes(previewView)
+    ? previewView
+    : validViews.includes(nextState.activeView)
+      ? nextState.activeView
+      : "adventure";
+
+  return {
+    ...nextState,
+    activeView,
+    league: nextState.league === "青铜动能者" ? "青铜行动者" : nextState.league,
+    leagueXp: Number.isFinite(nextState.leagueXp) ? nextState.leagueXp : 202,
+    todayLeagueXp: Number.isFinite(nextState.todayLeagueXp) ? nextState.todayLeagueXp : 0,
+    completions: Array.isArray(nextState.completions) ? nextState.completions : [],
+    likedFeedIds: Array.isArray(nextState.likedFeedIds) ? nextState.likedFeedIds : [],
+    feedItems: Array.isArray(nextState.feedItems) && nextState.feedItems.length ? nextState.feedItems : seedFeedItems,
+  };
 }
 
 function saveState() {
@@ -152,6 +228,8 @@ function render() {
   renderAdventure();
   renderQuickMoves();
   renderQuests();
+  renderLeague();
+  renderCommunity();
 }
 
 function renderShell() {
@@ -307,6 +385,65 @@ function renderQuests() {
   });
 }
 
+function renderLeague() {
+  const ranking = getLeagueRanking();
+  const myRank = ranking.findIndex((item) => item.id === "me") + 1;
+  const tierIndex = leagueTiers.findIndex((tier) => tier.name === state.league);
+  const currentTierIndex = tierIndex >= 0 ? tierIndex : 0;
+
+  dom.leagueName.textContent = leagueTiers[currentTierIndex].name;
+  dom.leagueName.style.color = leagueTiers[currentTierIndex].color;
+  dom.leagueTimeLeft.textContent = "本轮剩余 2天14小时";
+  dom.leagueRankPill.textContent = `当前第 ${myRank} / 20 名`;
+
+  dom.leaguePath.innerHTML = "";
+  leagueTiers.forEach((tier, index) => {
+    const item = document.createElement("li");
+    item.className = index === currentTierIndex ? "active" : "";
+    item.style.setProperty("--tier-color", tier.color);
+    item.innerHTML = `
+      <span>${index + 1}</span>
+      <small>${tier.name.slice(0, 2)}</small>
+    `;
+    dom.leaguePath.append(item);
+  });
+
+  dom.rankingList.innerHTML = "";
+  ranking.forEach((user, index) => {
+    const rank = index + 1;
+    const row = document.createElement("li");
+    row.className = `ranking-row ${rankZone(rank)}${user.id === "me" ? " is-me" : ""}`;
+    row.innerHTML = `
+      <span>${rank}</span>
+      <strong>${user.name}</strong>
+      <em>${user.xp} XP</em>
+    `;
+    dom.rankingList.append(row);
+  });
+}
+
+function renderCommunity() {
+  dom.feedList.innerHTML = "";
+  state.feedItems.forEach((item) => {
+    const liked = state.likedFeedIds.includes(item.id);
+    const card = document.createElement("article");
+    card.className = `feed-card feed-card--${item.type}`;
+    card.innerHTML = `
+      <span class="feed-icon">${item.icon}</span>
+      <div>
+        <h2>${item.title}</h2>
+        <p>${item.meta}</p>
+        <div class="feed-actions">
+          <button type="button" data-like-feed="${item.id}" aria-pressed="${liked}">${liked ? "已赞" : "赞"} ${item.likes + (liked ? 1 : 0)}</button>
+          <button type="button">评论 ${item.comments}</button>
+          <button type="button">分享</button>
+        </div>
+      </div>
+    `;
+    dom.feedList.append(card);
+  });
+}
+
 function completeCurrentLevel() {
   completeTask(getCurrentLevel().id);
 }
@@ -321,12 +458,28 @@ function completeTask(taskId) {
     return;
   }
 
+  const leagueXp = calculateLeagueXp(task);
+
   state.xp += task.xp;
+  state.leagueXp += leagueXp;
   state.streak += 1;
   state.todayTasks += 1;
+  state.todayLeagueXp += leagueXp;
   state.todayMainOrQuick += task.kind === "adventure" || task.minutes >= 10 ? 1 : 0;
   state.weekMoveDays = Math.min(state.weekMoveDays + 1, 4);
   state.monthTaskCount = Math.min(state.monthTaskCount + 1, 20);
+  state.completions = [
+    {
+      id: `c-${Date.now()}`,
+      taskId: task.id,
+      kind: task.kind,
+      title: task.title,
+      xp: task.xp,
+      leagueXp,
+      completedAt: new Date().toISOString(),
+    },
+    ...state.completions,
+  ].slice(0, 40);
 
   if (task.kind === "quick") {
     state.weekQuickCount = Math.min(state.weekQuickCount + 1, 2);
@@ -343,26 +496,24 @@ function completeTask(taskId) {
     state.currentAdventureTaskId = nextLevel?.id || task.id;
   }
 
+  addCompletionFeed(task, leagueXp);
   saveState();
   render();
-  showDialog(task, true);
+  showDialog(task, true, leagueXp);
 }
 
-function showDialog(task, rewarded) {
+function showDialog(task, rewarded, leagueXp = 0) {
   dom.dialogLabel.textContent = task.kind === "quick" ? "Quick Move Done" : "Quest Complete";
   dom.dialogTitle.textContent = `${task.title}完成`;
   dom.dialogBody.textContent = rewarded
-    ? `获得 ${task.xp} XP，streak +1，Quest 进度已同步。`
+    ? `获得 ${task.xp} XP，锦标赛 +${leagueXp} XP，Quest 和社区动态已同步。`
     : "这关已经完成过了，本次作为回看练习，不重复结算 XP。";
   dom.closeDialog.textContent = task.kind === "quick" ? "继续快练" : "继续闯关";
   dom.completeDialog.showModal();
 }
 
 function switchView(viewName) {
-  if (!["adventure", "quick", "quest"].includes(viewName)) {
-    showPlaceholder(viewName);
-    return;
-  }
+  if (!validViews.includes(viewName)) return;
 
   state.activeView = viewName;
   saveState();
@@ -370,19 +521,67 @@ function switchView(viewName) {
   dom.screen.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function showPlaceholder(viewName) {
-  const [title, subtitle] = viewCopy[viewName] || viewCopy.adventure;
-  dom.dialogLabel.textContent = "Coming Next";
-  dom.dialogTitle.textContent = title;
-  dom.dialogBody.textContent = `${subtitle}。这次先完成快练和 Quest，后续可以继续接上这个板块。`;
-  dom.closeDialog.textContent = "知道了";
-  dom.completeDialog.showModal();
-}
-
 function resetDemo() {
   state = { ...defaultState, activeView: state.activeView };
   saveState();
   render();
+}
+
+function getLeagueRanking() {
+  return [{ id: "me", name: "我", xp: state.leagueXp }, ...leagueRivals]
+    .sort((a, b) => b.xp - a.xp)
+    .slice(0, 20);
+}
+
+function rankZone(rank) {
+  if (rank <= 5) return "promote";
+  if (rank >= 16) return "drop";
+  return "hold";
+}
+
+function calculateLeagueXp(task) {
+  const remainingCap = Math.max(0, 150 - state.todayLeagueXp);
+  const sameQuickToday = state.completions.filter((completion) => completion.taskId === task.id && task.kind === "quick").length;
+  const decay = task.kind === "quick" ? Math.max(0.35, 1 - sameQuickToday * 0.35) : 1;
+  return Math.min(remainingCap, Math.round(task.xp * decay));
+}
+
+function addCompletionFeed(task, leagueXp) {
+  const feedItem = {
+    id: `feed-${Date.now()}`,
+    type: task.milestone ? "badge" : "completion",
+    icon: task.milestone ? "奖" : task.kind === "quick" ? "火" : "动",
+    title: `我完成了「${task.title}」`,
+    meta: `自动动态 · 锦标赛 +${leagueXp} XP`,
+    likes: 0,
+    comments: 0,
+  };
+  state.feedItems = [feedItem, ...state.feedItems].slice(0, 12);
+}
+
+function likeFeedItem(feedId) {
+  state.likedFeedIds = state.likedFeedIds.includes(feedId)
+    ? state.likedFeedIds.filter((id) => id !== feedId)
+    : [...state.likedFeedIds, feedId];
+  saveState();
+  renderCommunity();
+}
+
+function publishMockFeed() {
+  state.feedItems = [
+    {
+      id: `mock-${Date.now()}`,
+      type: "share",
+      icon: "卡",
+      title: "我分享了一张今日运动任务卡",
+      meta: "好友分享 · 刚刚",
+      likes: 0,
+      comments: 0,
+    },
+    ...state.feedItems,
+  ].slice(0, 12);
+  saveState();
+  renderCommunity();
 }
 
 function statusLabel(status) {
@@ -406,6 +605,7 @@ function percent(value, target) {
 dom.startAdventure.addEventListener("click", completeCurrentLevel);
 dom.resetProgress.addEventListener("click", resetDemo);
 dom.closeDialog.addEventListener("click", () => dom.completeDialog.close());
+dom.publishMock.addEventListener("click", publishMockFeed);
 
 document.addEventListener("click", (event) => {
   const navButton = event.target.closest("[data-target-view]");
@@ -413,6 +613,9 @@ document.addEventListener("click", (event) => {
 
   const completeButton = event.target.closest("[data-complete-task]");
   if (completeButton) completeTask(completeButton.dataset.completeTask);
+
+  const likeButton = event.target.closest("[data-like-feed]");
+  if (likeButton) likeFeedItem(likeButton.dataset.likeFeed);
 });
 
 render();

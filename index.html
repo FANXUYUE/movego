@@ -124,6 +124,44 @@
               <div class="daily-list" id="dailyQuestList"></div>
             </section>
           </section>
+
+          <section class="view" id="leagueView" data-view="league" aria-label="锦标赛">
+            <section class="league-hero" aria-labelledby="leagueName">
+              <div>
+                <h2 id="leagueName">青铜行动者</h2>
+                <p id="leagueTimeLeft">本轮剩余 2天14小时</p>
+                <span id="leagueRankPill">当前第 7 / 20 名</span>
+              </div>
+              <strong>前5晋级 · 后5降级</strong>
+            </section>
+
+            <section class="league-section" aria-labelledby="leaguePathTitle">
+              <h2 id="leaguePathTitle">段位路径</h2>
+              <ol class="league-path" id="leaguePath"></ol>
+            </section>
+
+            <section class="league-section" aria-labelledby="rankingTitle">
+              <div class="section-heading">
+                <h2 id="rankingTitle">排行榜</h2>
+                <span class="zone-key">晋级 / 保级 / 降级</span>
+              </div>
+              <ol class="ranking-list" id="rankingList"></ol>
+            </section>
+
+            <button class="primary-action league-cta" data-target-view="quick" type="button">完成任务赚取锦标赛 XP</button>
+          </section>
+
+          <section class="view" id="communityView" data-view="community" aria-label="社区">
+            <section class="composer-card">
+              <div>
+                <h2>分享今天的运动</h2>
+                <p>照片 / 视频 / 任务卡片</p>
+              </div>
+              <button class="primary-action primary-action--small" id="publishMock" type="button">发布</button>
+            </section>
+
+            <section class="feed-list" id="feedList" aria-label="好友动态流"></section>
+          </section>
         </section>
 
         <nav class="bottom-nav" aria-label="底部导航">

@@ -733,6 +733,255 @@ h3 {
   white-space: nowrap;
 }
 
+.league-hero {
+  min-height: 116px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 22px;
+  border-radius: 28px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.league-hero h2 {
+  font-size: 22px;
+}
+
+.league-hero p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.league-hero span {
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  color: var(--mint-dark);
+  background: var(--mint-soft);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.league-hero strong {
+  flex: 0 0 auto;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.league-section {
+  margin-top: 22px;
+}
+
+.league-section > h2,
+.league-section .section-heading h2 {
+  font-size: 18px;
+}
+
+.zone-key {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.league-path {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 7px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.league-path li {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.league-path span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--tier-color);
+  font-size: 9px;
+  font-weight: 900;
+  box-shadow: 0 5px 12px rgba(0, 46, 20, 0.09);
+}
+
+.league-path small {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.league-path li.active span {
+  outline: 3px solid var(--mint-soft);
+  transform: translateY(-1px);
+}
+
+.ranking-list {
+  display: grid;
+  gap: 4px;
+  max-height: 218px;
+  overflow-y: auto;
+  margin: 12px 0 0;
+  padding: 0 2px 4px 0;
+  list-style: none;
+  scrollbar-width: none;
+}
+
+.ranking-list::-webkit-scrollbar {
+  display: none;
+}
+
+.ranking-row {
+  min-height: 24px;
+  display: grid;
+  grid-template-columns: 28px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--panel);
+}
+
+.ranking-row.promote {
+  background: var(--mint-soft);
+}
+
+.ranking-row.drop {
+  background: #fff2f0;
+}
+
+.ranking-row.is-me {
+  background: #e0fae5;
+  box-shadow: inset 0 0 0 1.5px #b7edc5;
+}
+
+.ranking-row span,
+.ranking-row em {
+  color: var(--muted);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.ranking-row.promote span,
+.ranking-row.is-me strong {
+  color: var(--mint-dark);
+}
+
+.ranking-row.drop span {
+  color: #bf574f;
+}
+
+.ranking-row strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ink);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.league-cta {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.composer-card {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 22px;
+  border-radius: 24px;
+  background: var(--panel);
+  box-shadow: 0 4px 14px rgba(0, 46, 20, 0.07);
+}
+
+.composer-card h2 {
+  font-size: 16px;
+}
+
+.composer-card p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.feed-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.feed-card {
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 16px 20px;
+  border-radius: 26px;
+  background: var(--panel);
+  box-shadow: 0 4px 14px rgba(0, 46, 20, 0.07);
+}
+
+.feed-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--mint-dark);
+  background: var(--mint-soft);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.feed-card h2 {
+  font-size: 15px;
+  line-height: 1.28;
+}
+
+.feed-card p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.feed-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.feed-actions button {
+  padding: 0;
+  color: var(--mint-dark);
+  background: transparent;
+  font-size: 11px;
+  font-weight: 800;
+}
+
 .bottom-nav {
   position: absolute;
   left: 12px;
