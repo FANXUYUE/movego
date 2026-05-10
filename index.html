@@ -3,90 +3,148 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>动动Go / MoveGo - Adventure</title>
+    <title>动动Go / MoveGo App Demo</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="app-shell">
-      <section class="phone" aria-label="动动Go Adventure">
-        <section class="screen">
+      <section class="phone" aria-label="动动Go App Demo">
+        <section class="screen" id="screen">
           <header class="topbar app-header">
             <div>
-              <h1>动动Go</h1>
-              <p>今天不用很猛，动一下就算赢。</p>
+              <h1 id="viewTitle">动动Go</h1>
+              <p id="viewSubtitle">今天不用很猛，动一下就算赢。</p>
             </div>
-            <button class="avatar-button" aria-label="进入我的页">
+            <button class="avatar-button" aria-label="进入我的页" type="button">
               <img class="mascot-art mascot-art--small" src="./assets/mascot/dongdong-3d-avatar.png" alt="" aria-hidden="true" />
             </button>
           </header>
 
-          <section class="user-card" aria-label="用户状态">
-            <div class="mascot-badge">
-              <img class="mascot-art mascot-art--card" src="./assets/mascot/dongdong-3d-base.png" alt="动动，戴绿色运动发带、背小水壶、穿运动鞋的小水豚" />
-            </div>
-            <div class="user-copy">
-              <h2>Lina</h2>
-              <p>Lv.5 · 青铜动能者</p>
-              <div class="level-track" aria-hidden="true"><span></span></div>
-              <div class="stat-row" aria-label="状态数据">
-                <span><strong id="streakValue">3</strong> 连续 7 天</span>
-                <span><strong id="xpValue">120</strong> XP</span>
+          <section class="view active" id="adventureView" data-view="adventure" aria-label="冒险">
+            <section class="user-card" aria-label="用户状态">
+              <div class="mascot-badge">
+                <img class="mascot-art mascot-art--card" src="./assets/mascot/dongdong-3d-base.png" alt="动动，戴绿色运动发带、背小水壶、穿运动鞋的小水豚" />
               </div>
-            </div>
-          </section>
+              <div class="user-copy">
+                <h2>Lina</h2>
+                <p>Lv.5 · <span id="leagueValue">青铜动能者</span></p>
+                <div class="level-track" aria-hidden="true"><span></span></div>
+                <div class="stat-row" aria-label="状态数据">
+                  <span><strong id="streakValue">3</strong> 连续天数</span>
+                  <span><strong id="xpValue">120</strong> XP</span>
+                </div>
+              </div>
+            </section>
 
-          <section class="chapter-heading" id="milestoneCard" aria-live="polite">
-            <div>
-              <h2>第 1 章：从 0 开始动起来</h2>
-              <p id="milestoneTitle">再完成 1 关，解锁第一步勇士</p>
-            </div>
-            <span id="milestoneCount">0/5</span>
-          </section>
-
-          <section class="map-section" aria-labelledby="mapTitle">
-            <div class="section-heading">
+            <section class="chapter-heading" id="milestoneCard" aria-live="polite">
               <div>
-                <h2 id="mapTitle">主线地图</h2>
+                <h2>第 1 章：从 0 开始动起来</h2>
+                <p id="milestoneTitle">再完成 1 关，解锁第一步勇士</p>
               </div>
-              <button class="reset-button" id="resetProgress" type="button">重置</button>
-            </div>
-            <ol class="adventure-map" id="adventureMap"></ol>
+              <span id="milestoneCount">0/5</span>
+            </section>
+
+            <section class="map-section" aria-labelledby="mapTitle">
+              <div class="section-heading">
+                <h2 id="mapTitle">主线地图</h2>
+                <button class="ghost-button" id="resetProgress" type="button">重置</button>
+              </div>
+              <ol class="adventure-map" id="adventureMap"></ol>
+            </section>
+
+            <section class="current-card" id="currentCard" aria-live="polite">
+              <div class="current-card__meta">
+                <p class="label" id="currentCode">1-1 当前关卡</p>
+                <h2 id="currentTitle">下楼走一圈</h2>
+                <p id="currentGoal">完成第一次低门槛运动</p>
+                <div class="pill-row">
+                  <span id="currentDuration">5 分钟</span>
+                  <span id="currentType">步行启动</span>
+                  <span id="currentReward">20 XP</span>
+                </div>
+              </div>
+              <button class="primary-action" id="startAdventure" type="button">开始</button>
+            </section>
           </section>
 
-          <section class="current-card" id="currentCard" aria-live="polite">
-            <div class="current-card__meta">
-              <p class="label" id="currentCode">1-1 当前关卡</p>
-              <h2 id="currentTitle">下楼走一圈</h2>
-              <p id="currentGoal">完成第一次低门槛运动</p>
-              <div class="pill-row">
-                <span id="currentDuration">5 分钟</span>
-                <span id="currentType">步行启动</span>
-                <span id="currentReward">20 XP</span>
+          <section class="view" id="quickView" data-view="quick" aria-label="快练">
+            <section class="recommend-card">
+              <img class="mascot-art mascot-art--recommend" src="./assets/mascot/dongdong-3d-cheer.png" alt="" aria-hidden="true" />
+              <div>
+                <p class="label">动动推荐</p>
+                <h2>坐久了？先做一个 10 分钟肩颈放松。</h2>
+                <button class="soft-chip" data-complete-task="q-neck" type="button">保住连续记录</button>
               </div>
-            </div>
-            <button class="primary-action" id="startAdventure" type="button">开始</button>
+            </section>
+
+            <section class="quick-section" aria-labelledby="quickTitle">
+              <h2 id="quickTitle">今日快练</h2>
+              <div class="quick-grid" id="quickGrid"></div>
+            </section>
+
+            <section class="recent-section" aria-labelledby="recentTitle">
+              <h2 id="recentTitle">最近常练</h2>
+              <article class="recent-card">
+                <div>
+                  <h3 id="recentTitleText">图书馆肩颈恢复</h3>
+                  <p id="recentMeta">上次完成：昨天 21:40 · 连续记录已保住</p>
+                </div>
+                <button class="primary-action primary-action--small" data-complete-task="q-neck" type="button">再来</button>
+              </article>
+            </section>
+          </section>
+
+          <section class="view" id="questView" data-view="quest" aria-label="Quest">
+            <section class="month-quest">
+              <h2>五月动动计划</h2>
+              <p id="monthQuestText">本月完成 12 / 20 次运动任务</p>
+              <div class="quest-progress quest-progress--light" aria-hidden="true"><span id="monthQuestProgress"></span></div>
+              <strong>限定徽章 + 300 XP</strong>
+            </section>
+
+            <section class="quest-section" aria-labelledby="weekQuestTitle">
+              <h2 id="weekQuestTitle">本周 Quest</h2>
+              <div class="week-grid" id="weeklyQuestGrid"></div>
+            </section>
+
+            <section class="quest-section" aria-labelledby="teamQuestTitle">
+              <h2 id="teamQuestTitle">小队 Quest</h2>
+              <article class="team-quest">
+                <div>
+                  <h3>宿舍动动队 7日挑战</h3>
+                  <p id="teamQuestText">17 / 25 次 · 4/5 人参与</p>
+                  <div class="quest-progress" aria-hidden="true"><span id="teamQuestProgress"></span></div>
+                </div>
+                <span class="reward-orb">奖</span>
+              </article>
+            </section>
+
+            <section class="quest-section" aria-labelledby="dailyQuestTitle">
+              <h2 id="dailyQuestTitle">今日 Quest</h2>
+              <div class="daily-list" id="dailyQuestList"></div>
+            </section>
           </section>
         </section>
 
         <nav class="bottom-nav" aria-label="底部导航">
-          <button class="nav-item active" type="button" aria-current="page">
-            <span aria-hidden="true">◇</span>
+          <button class="nav-item active" type="button" data-target-view="adventure" aria-current="page">
+            <span aria-hidden="true">A</span>
             冒险
           </button>
-          <button class="nav-item" type="button">
-            <span aria-hidden="true">↯</span>
+          <button class="nav-item" type="button" data-target-view="quick">
+            <span aria-hidden="true">Q</span>
             快练
           </button>
-          <button class="nav-item" type="button">
-            <span aria-hidden="true">✓</span>
+          <button class="nav-item" type="button" data-target-view="quest">
+            <span aria-hidden="true">T</span>
             Quest
           </button>
-          <button class="nav-item" type="button">
-            <span aria-hidden="true">♢</span>
+          <button class="nav-item" type="button" data-target-view="league">
+            <span aria-hidden="true">L</span>
             锦标赛
           </button>
-          <button class="nav-item" type="button">
-            <span aria-hidden="true">＋</span>
+          <button class="nav-item" type="button" data-target-view="community">
+            <span aria-hidden="true">C</span>
             社区
           </button>
         </nav>
@@ -97,10 +155,10 @@
       <div class="dialog-mascot">
         <img class="mascot-art mascot-art--dialog" src="./assets/mascot/dongdong-3d-cheer.png" alt="" aria-hidden="true" />
       </div>
-      <p class="label">Quest Complete</p>
+      <p class="label" id="dialogLabel">Quest Complete</p>
       <h2 id="dialogTitle">下楼走一圈完成</h2>
       <p id="dialogBody">获得 20 XP，下一关已解锁。</p>
-      <button class="primary-action" id="closeDialog" type="button">继续闯关</button>
+      <button class="primary-action" id="closeDialog" type="button">继续</button>
     </dialog>
 
     <script src="./script.js"></script>
